@@ -7,28 +7,21 @@ export interface Figure {
 export class Triangle implements Figure {
   public shape: 'triangle' = 'triangle';
 
-  a: number;
-
-  b: number;
-
-  c: number;
-
   constructor(
     public color: 'red' | 'green' | 'blue',
-    a: number,
-    b: number,
-    c: number,
+    public a: number,
+    public b: number,
+    public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('your error message');
+      throw new Error('All sides must be greater than zero.');
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('your error message');
+      throw new Error(
+        'The sum of any two sides must be greater than the third side.',
+      );
     }
-    this.a = a;
-    this.b = b;
-    this.c = c;
   }
 
   getArea(): number {
@@ -42,16 +35,13 @@ export class Triangle implements Figure {
 export class Circle implements Figure {
   public shape: 'circle' = 'circle';
 
-  radius: number;
-
   constructor(
     public color: 'red' | 'green' | 'blue',
-    radius: number,
+    public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('Radius must be greater than zero.');
     }
-    this.radius = radius;
   }
 
   getArea(): number {
@@ -64,20 +54,14 @@ export class Circle implements Figure {
 export class Rectangle implements Figure {
   public shape: 'rectangle' = 'rectangle';
 
-  width: number;
-
-  height: number;
-
   constructor(
     public color: 'red' | 'green' | 'blue',
-    height: number,
-    width: number,
+    public height: number,
+    public width: number,
   ) {
     if (height <= 0 || width <= 0) {
-      throw new Error('your error message');
+      throw new Error('Width and height must be greater than zero.');
     }
-    this.width = width;
-    this.height = height;
   }
 
   getArea(): number {
